@@ -8,6 +8,7 @@ function Login({ }) {
 		const password = e.target.password.value;
 
 		// See Word document for code example.
+		await performLogin(username, password);
 
 		// Token needs to be sent to parent App component.
 	}
@@ -15,6 +16,11 @@ function Login({ }) {
 	return (
 		<>
 			<h1>Login</h1>
+
+			{/* added code */}
+			{loading ? <></> : null} 
+			{loading && <></>} 
+
 			<form onSubmit={handleSubmit}>
 				<div style={{ marginBottom: 5 }}>
 					<label htmlFor='username'>Username: </label>

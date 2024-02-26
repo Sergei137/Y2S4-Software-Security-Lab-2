@@ -3,7 +3,6 @@ import React, { useState} from 'react';
 function Login({ onLogin }) {
 
 	const [errorMessage, setErrorMessage] = useState(''); // Declare error message state variable
-	// const [loading, setLoading] = useState(false); // Declare loading state variable
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -32,7 +31,6 @@ function Login({ onLogin }) {
 				
 				// Send token to parent App component.
 				onLogin(token);
-
 			} else {
 				// Authentication failed
 
@@ -48,10 +46,6 @@ function Login({ onLogin }) {
 	return (
 		<>
 			<h1>Login</h1>
-
-			{/* added code
-			{loading ? <></> : null} 
-			{loading && <></>}  */}
 
 			<form onSubmit={handleSubmit}>
 				<div style={{ marginBottom: 5 }}>

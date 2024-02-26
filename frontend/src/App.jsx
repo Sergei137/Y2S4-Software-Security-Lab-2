@@ -5,8 +5,8 @@ import Login from './Login';
 import Fact from './Fact';
 import Logout from './Logout';
 
-function App() {
-    //const [token, setToken] = React.useState('');
+function App({ onLogin, onLogout }) {
+    const [token, setToken] = React.useState('');
 
     return (
         <div className="app">

@@ -1,31 +1,40 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 function Fact({ token }) {
-	const [fact, setFact] = React.useState('');
-
-	// See Word document for code example on fetching a fact.
+	const [fact, setFact] = useState('');
+	const [loading, setLoading] = useState(true); // Set loading to true by default.
 
 	// Fact will be fetched automatically when component is first mounted.
+	useEffect(() => {
+		// Get token from props.
+		const getFact = async () => {
+			const response = await fetch('http://localhost:3333/fact', {
+				headers: {
+					Authorization: `Bearer ${token}`
+				}
+			});
+			
+			// Parse response as JSON.
+			const data = await response.json();
+			
+			// Get fact from data.
+			const fact = data.fact;
+			
+			// Store fact in state.
+			setFact(fact)
+			
+			// Set loading to false.
+			setLoading(false);
+		}
 
-	// Get token from props.
+		// Call getFact when component is mounted for the first time.
+		getFact();
+	}, []); // Empty array dependency ensures this runs once on mount
 
-	const getFact = async () => {
-		const response = await fetch('http://localhost:3333/fact', {
-			headers: {
-				Authorization: `Bearer ${token}`
-			}
-		});
-
-		const data = await response.json();
-		
-		const fact = data.fact;
-		
-		// Store fact in state.
-		setFact(fact)
+	// If loading is true (fact not loaded), display loading spinner.
+	if (loading) {
+		return <div>Loading...</div>; // Replace with loading spinner
 	}
-
-	// Call getFact when component is mounted for the first time.
-	getFact();
 
 	return (
 		<>

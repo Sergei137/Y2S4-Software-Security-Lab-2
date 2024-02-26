@@ -11,7 +11,14 @@ function App({ onLogin, onLogout }) {
     return (
         <div className="app">
             {/* Display login form if token is not set. */}
-            <Login />
+            {
+                token ? 
+                    <Login onLogin={setToken(this.props.value)}/> 
+                :<>
+                    <Fact />
+                    <Logout />
+                </>
+            }
 
             {/* Display fact and logout if token is set. */}
             {/*<Fact />*/}

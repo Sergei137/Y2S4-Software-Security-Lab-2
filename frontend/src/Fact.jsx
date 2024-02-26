@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import 'App.css';
 
 function Fact({ token }) {
 	const [fact, setFact] = useState('');
@@ -33,7 +34,17 @@ function Fact({ token }) {
 
 	// If loading is true (fact not loaded), display loading spinner.
 	if (loading) {
-		return <div>Loading...</div>; // Replace with loading spinner
+		return (
+			<>
+				<div>
+					Loading...
+				</div>
+				{/* LOADING SPINNER */}
+				{/* <div> 
+					<LoadingSpinner />
+				</div> */}
+			</>
+		);
 	}
 
 	return (

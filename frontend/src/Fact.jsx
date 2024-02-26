@@ -1,7 +1,7 @@
 import React from 'react';
 
 function Fact({ token }) {
-	//const [fact, setFact] = React.useState('');
+	const [fact, setFact] = React.useState('');
 
 	// See Word document for code example on fetching a fact.
 
@@ -21,16 +21,16 @@ function Fact({ token }) {
 		const fact = data.fact;
 		
 		// Store fact in state.
+		setFact(fact)
 	}
 
 	// Call getFact when component is mounted for the first time.
 	getFact();
 
-
 	return (
 		<>
 			<h1>Fact</h1>
-			{/*<p>{fact}</p>*/}
+			<p>{fact}</p>
 		</>
 	);
 }

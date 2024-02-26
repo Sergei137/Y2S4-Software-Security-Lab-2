@@ -1,13 +1,18 @@
-import React from 'react';
+import React, { useState} from 'react';
 
-function Login({ }) {
+function Login({ onLogin }) {
+
+	const [errorMessage, setErrorMessage] = useState(''); // Declare error message state variable
+	// const [loading, setLoading] = useState(false); // Declare loading state variable
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+		// Get username and password from form
 		const username = e.target.username.value;
 		const password = e.target.password.value;
 
-		// See Word document for code example.
+		// performLogin is an async function that sends a POST request to /login API endpoint
 		const performLogin = async (username, password) => {
 			const response = await fetch('http://localhost:3333/login', {
 				method: 'post',
@@ -21,32 +26,32 @@ function Login({ }) {
 			const data = await response.json();
 		
 			if (response.ok && data.uuid) {
-				// Authenticated
+				// Authentication successful
 				
 				const token = data.uuid;
 				
 				// Send token to parent App component.
+				onLogin(token);
+
 			} else {
 				// Authentication failed
-				
-				const message = data.message;
-				
+
 				// Display message to user.
+				const errorMessage = data.message;
+				setErrorMessage(errorMessage);
 			}
 		}
 
 		await performLogin(username, password);
-
-		// Token needs to be sent to parent App component.
 	}
 
 	return (
 		<>
 			<h1>Login</h1>
 
-			{/* added code */}
+			{/* added code
 			{loading ? <></> : null} 
-			{loading && <></>} 
+			{loading && <></>}  */}
 
 			<form onSubmit={handleSubmit}>
 				<div style={{ marginBottom: 5 }}>
@@ -61,6 +66,8 @@ function Login({ }) {
 
 				<button type='submit'>Login</button>
 			</form>
+
+			{errorMessage && <p>{errorMessage}</p>}
 		</>
 	);
 }

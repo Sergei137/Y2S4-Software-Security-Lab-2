@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './App.css';
 import Login from './Login';
@@ -6,18 +6,19 @@ import Fact from './Fact';
 import Logout from './Logout';
 
 function App({ onLogin, onLogout }) {
-    const [token, setToken] = React.useState('');
+    const [token, setToken] = useState('');
 
     return (
         <div className="app">
             {/* Display login form if token is not set. */}
             {
                 token ? 
-                    <Login onLogin={setToken(this.props.value)}/> 
-                :<>
+                <>
                     <Fact />
-                    <Logout />
+                    <Logout onLogout={() => setToken('')} />
                 </>
+                :
+                <Login onLogin={setToken} />
             }
 
             {/* Display fact and logout if token is set. */}

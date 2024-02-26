@@ -8,6 +8,33 @@ function Login({ }) {
 		const password = e.target.password.value;
 
 		// See Word document for code example.
+		const performLogin = async (username, password) => {
+			const response = await fetch('http://localhost:3333/login', {
+				method: 'post',
+				headers: {
+					// Required for ExpressJS to parse body
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({ username, password })
+			});
+			
+			const data = await response.json();
+		
+			if (response.ok && data.uuid) {
+				// Authenticated
+				
+				const token = data.uuid;
+				
+				// Send token to parent App component.
+			} else {
+				// Authentication failed
+				
+				const message = data.message;
+				
+				// Display message to user.
+			}
+		}
+
 		await performLogin(username, password);
 
 		// Token needs to be sent to parent App component.

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import Spinner from './Spinner';
+
 
 function Fact({ token }) {
 	const [fact, setFact] = useState('');
@@ -27,7 +29,7 @@ function Fact({ token }) {
 			// Set loading to false (artificial loading time).
 			setTimeout(() => {
                 setLoading(false);
-            }, 2000);
+            }, 5000);
 		}
 
 		// Call getFact when component is mounted for the first time.
@@ -35,22 +37,21 @@ function Fact({ token }) {
 	}, [token]);
 
 	// If loading is true (fact not loaded), display loading message/spinner.
-	if (loading) {
-		return (
-			<>
+	return (
+		<div>
+			{loading ? (
+				<Spinner />
+		  	) : (
 				<div>
-					Loading...
+			  		<h1 style={{textAlign: 'center'}}>Fact</h1>
+					<div style={{ textAlign: 'center', fontSize: '20px' }}>
+						<p>{fact}</p>
+					</div>
 				</div>
-			</>
-		);
-	} else {
-		return (
-			<>
-				<h1>Fact</h1>
-				<p>{fact}</p>
-			</>
-		);
-	}
+		  	)}
+		</div>
+	);
 }
 
 export default Fact;
+

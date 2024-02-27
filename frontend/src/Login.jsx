@@ -47,7 +47,7 @@ function Login({ onLogin }) {
 
 	return (
 		<>
-			<h1 style={{textAlign: 'center'}}>Login</h1>
+			<h1 style={{textAlign: 'center'}}>Login to view Chuck Norris facts</h1>
 
 			<form onSubmit={handleSubmit}>
 				<div style={{ marginBottom: 5, textAlign: 'center' }}>
@@ -61,11 +61,13 @@ function Login({ onLogin }) {
 				</div>
 
 				<div style={{ textAlign: 'center' }}>
-					<button type='submit'>Login</button>
+					<button type='submit' style={{ color: 'white', fontWeight: 'bold', backgroundColor: 'blue', padding: '10px 20px', border: 'none', borderRadius: '10px', cursor: 'pointer'}}>
+						LOGIN
+					</button>
 				</div>
 			</form>
 
-			{errorMessage && <p>{errorMessage}</p>}
+			{errorMessage && <div style={{ textAlign: 'center' }}><p>{errorMessage}</p></div>}
 		</>
 	);
 }

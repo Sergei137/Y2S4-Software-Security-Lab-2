@@ -8,10 +8,9 @@ import Logout from './Logout';
 function App() {
     const [token, setToken] = useState(null);
 
+    // Clear the token when the user logs out
     const handleLogout = (message) => {
         console.log(message);
-
-        // Clear the token when the user logs out
         setToken(null);
     };
 
@@ -22,7 +21,9 @@ function App() {
                 token ? 
                 <>
                     {/* Display fact and logout if token is set. */}
-                    <Logout onLogout={handleLogout} token={token} />
+                    <div style={{ position: 'absolute', right: 0, marginRight: '16px' }}>
+                        <Logout onLogout={handleLogout} token={token} />
+                    </div>
                     <Fact token={token}/>
                 </>
                 :
@@ -31,11 +32,5 @@ function App() {
         </div>
     );
 }
-
-// const styles = StyleSheet.create({
-//     title: {
-//         fontSize: 14
-//     }
-// })
 
 export default App;

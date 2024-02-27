@@ -26,6 +26,7 @@ function Logout({ onLogout, token }) {
 			}
 
 		} catch (error) {
+			
 			// Log any errors
 			console.error(error);
 		}
@@ -33,8 +34,8 @@ function Logout({ onLogout, token }) {
 
 	return (
 		<>
-			<button onClick={handleLogout}>
-				Logout
+			<button type='submit' onClick={handleLogout} style={{ color: 'white', fontWeight: 'bold', backgroundColor: 'blue', padding: '10px 20px', border: 'none', borderRadius: '10px', cursor: 'pointer'}}>
+				LOGOUT
 			</button>
 		</>
 	);

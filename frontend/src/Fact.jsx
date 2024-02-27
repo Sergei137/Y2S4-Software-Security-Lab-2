@@ -30,7 +30,7 @@ function Fact({ token }) {
 
 		// Call getFact when component is mounted for the first time.
 		getFact();
-	}, []); // Empty array dependency ensures this runs once on mount
+	}, [token]);
 
 	// If loading is true (fact not loaded), display loading spinner.
 	if (loading) {

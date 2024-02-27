@@ -22,6 +22,7 @@ function Login({ onLogin }) {
 				body: JSON.stringify({ username, password })
 			});
 			
+			// Parse response as JSON
 			const data = await response.json();
 		
 			if (response.ok && data.uuid) {
@@ -39,7 +40,8 @@ function Login({ onLogin }) {
 				setErrorMessage(errorMessage);
 			}
 		}
-
+		
+		// Call performLogin with username and password as input.
 		await performLogin(username, password);
 	}
 

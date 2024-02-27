@@ -24,7 +24,7 @@ function Fact({ token }) {
 			// Store fact in state.
 			setFact(fact)
 			
-			// Set loading to false.
+			// Set loading to false (artificial loading time).
 			setTimeout(() => {
                 setLoading(false);
             }, 2000);
@@ -34,7 +34,7 @@ function Fact({ token }) {
 		getFact();
 	}, [token]);
 
-	// If loading is true (fact not loaded), display loading spinner.
+	// If loading is true (fact not loaded), display loading message/spinner.
 	if (loading) {
 		return (
 			<>

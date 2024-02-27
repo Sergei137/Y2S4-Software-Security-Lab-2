@@ -39,10 +39,6 @@ function Fact({ token }) {
 				<div>
 					Loading...
 				</div>
-				{/* LOADING SPINNER */}
-				{/* <div> 
-					<LoadingSpinner />
-				</div> */}
 			</>
 		);
 	}

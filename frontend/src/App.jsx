@@ -22,8 +22,8 @@ function App() {
                 token ? 
                 <>
                     {/* Display fact and logout if token is set. */}
-                    <Fact token={token}/>
                     <Logout onLogout={handleLogout} token={token} />
+                    <Fact token={token}/>
                 </>
                 :
                 <Login onLogin={setToken} />

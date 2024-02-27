@@ -25,7 +25,9 @@ function Fact({ token }) {
 			setFact(fact)
 			
 			// Set loading to false.
-			setLoading(false);
+			setTimeout(() => {
+                setLoading(false);
+            }, 2000);
 		}
 
 		// Call getFact when component is mounted for the first time.
@@ -41,14 +43,14 @@ function Fact({ token }) {
 				</div>
 			</>
 		);
+	} else {
+		return (
+			<>
+				<h1>Fact</h1>
+				<p>{fact}</p>
+			</>
+		);
 	}
-
-	return (
-		<>
-			<h1>Fact</h1>
-			<p>{fact}</p>
-		</>
-	);
 }
 
 export default Fact;

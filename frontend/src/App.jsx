@@ -32,4 +32,10 @@ function App() {
     );
 }
 
+// const styles = StyleSheet.create({
+//     title: {
+//         fontSize: 14
+//     }
+// })
+
 export default App;

@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 
 function Login({ onLogin }) {
 
@@ -47,20 +47,22 @@ function Login({ onLogin }) {
 
 	return (
 		<>
-			<h1>Login</h1>
+			<h1 style={{textAlign: 'center'}}>Login</h1>
 
 			<form onSubmit={handleSubmit}>
-				<div style={{ marginBottom: 5 }}>
-					<label htmlFor='username'>Username: </label>
-					<input id='username' name='username' type='text' />
+				<div style={{ marginBottom: 5, textAlign: 'center' }}>
+					<label htmlFor='username' style={{fontSize: 15}}>Username: </label>
+					<input id='username' name='username' type='text' style={{border: 2, borderStyle: 'solid', borderRadius: 5, padding: 5}} />
 				</div>
 
-				<div style={{ marginBottom: 5 }}>
-					<label htmlFor='password'>Password: </label>
-					<input id='password' name='password' type='password' />
+				<div style={{ marginBottom: 5, textAlign: 'center' }}>
+					<label htmlFor='password' style={{fontSize: 15}}>Password: </label>
+					<input id='password' name='password' type='password' style={{border: 2, borderStyle: 'solid', borderRadius: 5, padding: 5}} />
 				</div>
 
-				<button type='submit'>Login</button>
+				<div style={{ textAlign: 'center' }}>
+					<button type='submit'>Login</button>
+				</div>
 			</form>
 
 			{errorMessage && <p>{errorMessage}</p>}
